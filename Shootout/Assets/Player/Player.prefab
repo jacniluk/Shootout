@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1858941840807612902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3559538317044828151}
+  m_Layer: 0
+  m_Name: Shot slot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3559538317044828151
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858941840807612902}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5562307844897110313}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1873450142255363278
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,7 +59,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1.5}
   m_LocalScale: {x: 0.5, y: 0.5, z: 2}
-  m_Children: []
+  m_Children:
+  - {fileID: 3559538317044828151}
   m_Father: {fileID: 6924082602712531223}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -103,6 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6076914582497713272}
   - component: {fileID: 5502028604068024326}
+  - component: {fileID: 53088173464188094}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -137,6 +169,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35124c6acd6acb41a673d0ea13fbcd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &53088173464188094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3836859360028630474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a07f44299d493448781833825f0a9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotSlot: {fileID: 3559538317044828151}
+  shotPrefab: {fileID: 4497607332894122301, guid: 13c5fe090f99b96488b63fb04ad8894f,
+    type: 3}
 --- !u!1 &7187956026035286931
 GameObject:
   m_ObjectHideFlags: 0
