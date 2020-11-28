@@ -155,6 +155,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8cd08a39d82aec4dbbf4fad7509cba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canShoot: 1
+  shotSlot: {fileID: 3559538317044828151}
+  shotPrefab: {fileID: 4497607332894122301, guid: 13c5fe090f99b96488b63fb04ad8894f,
+    type: 3}
 --- !u!136 &8871193833268257611
 CapsuleCollider:
   m_ObjectHideFlags: 0

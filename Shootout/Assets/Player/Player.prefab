@@ -157,6 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3a6317a334241419445e55794fc3d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canShoot: 1
+  shotSlot: {fileID: 3559538317044828151}
+  shotPrefab: {fileID: 0}
 --- !u!114 &5502028604068024326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,9 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a07f44299d493448781833825f0a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotSlot: {fileID: 3559538317044828151}
-  shotPrefab: {fileID: 4497607332894122301, guid: 13c5fe090f99b96488b63fb04ad8894f,
-    type: 3}
 --- !u!136 &6499002165671388095
 CapsuleCollider:
   m_ObjectHideFlags: 0

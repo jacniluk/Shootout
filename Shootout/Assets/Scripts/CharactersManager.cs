@@ -37,4 +37,13 @@ public class CharactersManager : MonoBehaviour
             character.Rotate(shift);
         }
     }
+
+    // Shoot by all characters
+    public void CharactersShoot()
+    {
+        foreach (Character character in characters)
+        {
+            character.Shoot();
+        }
+    }
 }
