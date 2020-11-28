@@ -11,12 +11,57 @@ public class Character : MonoBehaviour
     // Bullet fire slot
     [SerializeField] private Transform shotSlot;
 
+    [Header("References")]
+    // Aiming line
+    [SerializeField] private LineRenderer aimingLine;
+
     [Header("Prefabs")]
     // Bullet shot
     [SerializeField] private GameObject shotPrefab;
 
     // Speed of rotation
     private const float RotationSpeed = 0.4f;
+
+    // Update
+    private void Update()
+    {
+        UpdateAimingLine();
+    }
+
+    // Update aiming line
+    private void UpdateAimingLine()
+    {
+        aimingLine.positionCount = 1;
+        aimingLine.SetPosition(0, shotSlot.position);
+
+        Vector3 lastPoint = shotSlot.position;
+        Vector3 direction = shotSlot.forward;
+
+        RaycastHit hit;
+        bool result = true;
+
+        while (result)
+        {
+            result = Physics.Raycast(lastPoint, direction, out hit);
+            if (result)
+            {
+                aimingLine.positionCount++;
+                aimingLine.SetPosition(aimingLine.positionCount - 1, hit.point);
+
+                lastPoint = hit.point;
+                direction = Vector3.Reflect(direction, hit.normal);
+
+                if (hit.transform.GetComponent<Character>() != null)
+                {
+                    return;
+                }
+            }
+        }
+
+        Vector3 fakePoint = lastPoint + 30.0f * direction;
+        aimingLine.positionCount++;
+        aimingLine.SetPosition(aimingLine.positionCount - 1, fakePoint);
+    }
 
     // Rotate character
     public void Rotate(float shift)
