@@ -6,6 +6,6 @@ public class Player : Character
     {
         base.Hit();
 
-        GameManager.Instance.GameOver();
+        CharactersManager.Instance.SetPlayerDead();
     }
 }

@@ -15,6 +15,11 @@ public class CharactersManager : MonoBehaviour
     // Instance
     public static CharactersManager Instance;
 
+    // Is player dead
+    private bool isPlayerDead;
+    // How many enemies is still alive
+    private int enemiesLeft;
+
     // Awake
     private void Awake()
     {
@@ -23,10 +28,11 @@ public class CharactersManager : MonoBehaviour
         PrepareCharacters();
     }
 
-    // Prepare characters list
+    // Prepare characters
     private void PrepareCharacters()
     {
         characters = charactersContainer.GetComponentsInChildren<Character>().ToList();
+        enemiesLeft = characters.FindAll(x => x.GetComponent<Enemy>() != null).Count;
     }
 
     // Rotate characters during player's aiming
@@ -45,5 +51,26 @@ public class CharactersManager : MonoBehaviour
         {
             character.Shoot();
         }
+
+        if (isPlayerDead)
+        {
+            GameManager.Instance.GameOver();
+        }
+        else if (enemiesLeft == 0)
+        {
+            Debug.Log("You win");
+        }
+    }
+
+    // Player was killed
+    public void SetPlayerDead()
+    {
+        isPlayerDead = true;
+    }
+
+    // Enemy was killed
+    public void SetEnemyDead()
+    {
+        enemiesLeft--;
     }
 }

@@ -159,8 +159,6 @@ MonoBehaviour:
   canShoot: 1
   shotSlot: {fileID: 3559538317044828151}
   aimingLine: {fileID: 2082227349371082496}
-  shotPrefab: {fileID: 4497607332894122301, guid: 13c5fe090f99b96488b63fb04ad8894f,
-    type: 3}
 --- !u!136 &8871193833268257611
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -391,7 +389,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f73ae4776b6c52246ab028950ecaf2da, type: 2}
+  - {fileID: 2100000, guid: 3e234b07820703847b0762d61c985010, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

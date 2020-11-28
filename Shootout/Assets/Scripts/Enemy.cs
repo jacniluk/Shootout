@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-// Enemy character in game
+﻿// Enemy character in game
 public class Enemy : Character
 {
     // When bullet hit enemy
@@ -8,6 +6,6 @@ public class Enemy : Character
     {
         base.Hit();
 
-        Debug.Log("You win");
+        CharactersManager.Instance.SetEnemyDead();
     }
 }

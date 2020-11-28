@@ -8,19 +8,18 @@ public class Character : MonoBehaviour
     [SerializeField] private bool canShoot;
 
     [Header("Objects")]
-    // Bullet fire slot
+    // Shot slot
     [SerializeField] private Transform shotSlot;
 
     [Header("References")]
     // Aiming line
     [SerializeField] private LineRenderer aimingLine;
 
-    [Header("Prefabs")]
-    // Bullet shot
-    [SerializeField] private GameObject shotPrefab;
-
     // Speed of rotation
     private const float RotationSpeed = 0.4f;
+
+    // Target which this character is aiming
+    private Character aimingTarget;
 
     // Start
     private void Start()
@@ -60,7 +59,8 @@ public class Character : MonoBehaviour
                 lastPoint = hit.point;
                 direction = Vector3.Reflect(direction, hit.normal);
 
-                if (hit.transform.GetComponent<Character>() != null)
+                aimingTarget = hit.transform.GetComponent<Character>();
+                if (aimingTarget != null)
                 {
                     return;
                 }
@@ -70,6 +70,8 @@ public class Character : MonoBehaviour
         Vector3 fakePoint = lastPoint + 30.0f * direction;
         aimingLine.positionCount++;
         aimingLine.SetPosition(aimingLine.positionCount - 1, fakePoint);
+
+        aimingTarget = null;
     }
 
     // Shoot
@@ -77,11 +79,14 @@ public class Character : MonoBehaviour
     {
         if (canShoot)
         {
-            GameObject shot = Instantiate(shotPrefab, shotSlot.position, transform.rotation);
+            if (aimingTarget != null)
+            {
+                aimingTarget.Hit();
+            }
         }
     }
 
-    // When bullet hit character
+    // When character is hit
     virtual public void Hit()
     {
 
