@@ -3,9 +3,6 @@
 // Player aiming controller
 public class PlayerAiming : MonoBehaviour
 {
-    // Speed of rotation
-    private const float RotationSpeed = 0.4f;
-
     // Is player currently aiming
     private bool isAiming;
     // Last mouse position in x axis during aiming
@@ -47,13 +44,6 @@ public class PlayerAiming : MonoBehaviour
     {
         float shift = Input.mousePosition.x - lastXposition;
         lastXposition = Input.mousePosition.x;
-        RotatePlayer(shift);
-    }
-
-    // Rotate character during aiminig
-    private void RotatePlayer(float shift)
-    {
-        float rotation = shift * RotationSpeed;
-        transform.Rotate(new Vector3(0.0f, rotation, 0.0f));
+        CharactersManager.Instance.RotateCharacters(shift);
     }
 }
