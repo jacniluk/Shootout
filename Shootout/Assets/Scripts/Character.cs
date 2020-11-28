@@ -22,9 +22,18 @@ public class Character : MonoBehaviour
     // Speed of rotation
     private const float RotationSpeed = 0.4f;
 
-    // Update
-    private void Update()
+    // Start
+    private void Start()
     {
+        UpdateAimingLine();
+    }
+
+    // Rotate character
+    public void Rotate(float shift)
+    {
+        float rotation = shift * RotationSpeed;
+        transform.Rotate(new Vector3(0.0f, rotation, 0.0f));
+
         UpdateAimingLine();
     }
 
@@ -61,13 +70,6 @@ public class Character : MonoBehaviour
         Vector3 fakePoint = lastPoint + 30.0f * direction;
         aimingLine.positionCount++;
         aimingLine.SetPosition(aimingLine.positionCount - 1, fakePoint);
-    }
-
-    // Rotate character
-    public void Rotate(float shift)
-    {
-        float rotation = shift * RotationSpeed;
-        transform.Rotate(new Vector3(0.0f, rotation, 0.0f));
     }
 
     // Shoot
