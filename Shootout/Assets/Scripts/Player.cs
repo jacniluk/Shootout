@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-// Player character in game
+﻿// Player character in game
 public class Player : Character
 {
     // When bullet hit player
@@ -8,6 +6,6 @@ public class Player : Character
     {
         base.Hit();
 
-        Debug.Log("Game over");
+        GameManager.Instance.GameOver();
     }
 }
