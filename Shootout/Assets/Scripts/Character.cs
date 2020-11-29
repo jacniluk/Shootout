@@ -19,6 +19,10 @@ public class Character : MonoBehaviour
     // Animator
     [SerializeField] private Animator animator;
 
+    [Header("Prefabs")]
+    // Destroy effect
+    [SerializeField] private GameObject destroyEffect;
+
     // Speed of rotation
     private const float RotationSpeed = 0.4f;
 
@@ -107,5 +111,6 @@ public class Character : MonoBehaviour
         characterCollider.enabled = false;
         animator.SetTrigger("Die");
         aimingLine.positionCount = 0;
+        Instantiate(destroyEffect, transform.position, transform.rotation);
     }
 }

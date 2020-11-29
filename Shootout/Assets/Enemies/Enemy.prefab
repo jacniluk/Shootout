@@ -82,6 +82,8 @@ MonoBehaviour:
   aimingLine: {fileID: 5363227013518003746}
   characterCollider: {fileID: 6499002165671388095}
   animator: {fileID: 6202128898464337822}
+  destroyEffect: {fileID: 5203430585144688835, guid: e27fc54aac6b0ef4490a4592d86cade8,
+    type: 3}
 --- !u!136 &6499002165671388095
 CapsuleCollider:
   m_ObjectHideFlags: 0
