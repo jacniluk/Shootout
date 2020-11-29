@@ -58,7 +58,7 @@ public class CharactersManager : MonoBehaviour
         }
         else if (enemiesLeft == 0)
         {
-            Debug.Log("You win");
+            GameManager.Instance.LevelComplete();
         }
     }
 

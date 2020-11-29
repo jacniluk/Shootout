@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 7972793898731067680}
   - component: {fileID: 2991074745661652655}
   m_Layer: 5
-  m_Name: Game Over Animation
+  m_Name: Message Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 2275742051141880812}
+  message: {fileID: 7972793899357175561}
   panelAnimation: {fileID: 2844667683921378601}
 --- !u!1 &7972793899357175559
 GameObject:

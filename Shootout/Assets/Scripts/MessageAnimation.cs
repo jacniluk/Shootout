@@ -1,20 +1,23 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 // Game over panel
-public class GameOverAnimation : MonoBehaviour
+public class MessageAnimation : MonoBehaviour
 {
     [Header("Objects")]
     // Panel
     [SerializeField] private GameObject panel;
+    // Message text
+    [SerializeField] private Text message;
 
     [Header("References")]
     // Panel animation
     [SerializeField] private Animation panelAnimation;
 
     // Instance
-    public static GameOverAnimation Instance;
+    public static MessageAnimation Instance;
 
     // Awake
     private void Awake()
@@ -22,14 +25,15 @@ public class GameOverAnimation : MonoBehaviour
         Instance = this;
     }
 
-    // Play animation
-    public void Play(Action finishAction)
+    // Show message animation
+    public void ShowMessage(string messageText, Action finishAction)
     {
-        StartCoroutine(PlayCoroutine(finishAction));
+        message.text = messageText;
+        StartCoroutine(ShowMessageCoroutine(finishAction));
     }
 
-    // Play animation coroutine
-    private IEnumerator PlayCoroutine(Action finishAction)
+    // Message animation coroutine
+    private IEnumerator ShowMessageCoroutine(Action finishAction)
     {
         panel.SetActive(true);
 

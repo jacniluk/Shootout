@@ -281,7 +281,7 @@ PrefabInstance:
     - target: {fileID: 7972793898731067681, guid: 528cfce124c78204992fbdae51026ea3,
         type: 3}
       propertyPath: m_Name
-      value: Game Over Animation
+      value: Message Animation
       objectReference: {fileID: 0}
     - target: {fileID: 7972793899357175559, guid: 528cfce124c78204992fbdae51026ea3,
         type: 3}
