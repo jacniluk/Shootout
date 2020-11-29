@@ -96,6 +96,7 @@ public class Character : MonoBehaviour
         if (canShoot)
         {
             animator.SetTrigger("Shoot");
+            SoundsManager.Instance.PlayShot();
 
             if (aimingTarget != null)
             {
@@ -112,5 +113,6 @@ public class Character : MonoBehaviour
         animator.SetTrigger("Die");
         aimingLine.positionCount = 0;
         Instantiate(destroyEffect, transform.position, transform.rotation);
+        SoundsManager.Instance.PlayDestroy();
     }
 }
