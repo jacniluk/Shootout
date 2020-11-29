@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -15,6 +16,8 @@ public class CharactersManager : MonoBehaviour
     // Instance
     public static CharactersManager Instance;
 
+    // All characters which were killed during last shot round
+    private List<Character> lastShotKilledCharacters;
     // Is player dead
     private bool isPlayerDead;
     // How many enemies is still alive
@@ -26,6 +29,8 @@ public class CharactersManager : MonoBehaviour
         Instance = this;
 
         PrepareCharacters();
+
+        lastShotKilledCharacters = new List<Character>();
     }
 
     // Prepare characters
@@ -47,10 +52,23 @@ public class CharactersManager : MonoBehaviour
     // Shoot by all characters
     public void CharactersShoot()
     {
+        StartCoroutine(CharactersShootCoroutine());
+    }
+
+    // Shoot by all characters coroutine
+    private IEnumerator CharactersShootCoroutine()
+    {
         foreach (Character character in characters)
         {
             character.Shoot();
         }
+
+        yield return new WaitForSeconds(0.2f);
+
+        lastShotKilledCharacters.ForEach(x => x.Hit());
+        lastShotKilledCharacters.Clear();
+
+        characters.ForEach(x => x.UpdateAimingLine());
 
         if (isPlayerDead)
         {
@@ -60,6 +78,12 @@ public class CharactersManager : MonoBehaviour
         {
             GameManager.Instance.LevelComplete();
         }
+    }
+
+    // Add character which was killed in current shot round
+    public void AddKilledCharacter(Character killedCharacter)
+    {
+        lastShotKilledCharacters.Add(killedCharacter);
     }
 
     // Player was killed

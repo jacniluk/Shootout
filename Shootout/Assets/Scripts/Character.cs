@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 // Character in game
 public class Character : MonoBehaviour
@@ -46,7 +45,7 @@ public class Character : MonoBehaviour
     }
 
     // Update aiming line
-    private void UpdateAimingLine()
+    public void UpdateAimingLine()
     {
         if (isDead || canShoot == false) return;
 
@@ -96,8 +95,7 @@ public class Character : MonoBehaviour
 
             if (aimingTarget != null)
             {
-                aimingTarget.Hit();
-                UpdateAimingLine();
+                CharactersManager.Instance.AddKilledCharacter(aimingTarget);
             }
         }
     }
@@ -105,18 +103,9 @@ public class Character : MonoBehaviour
     // When character is hit
     virtual public void Hit()
     {
-        StartCoroutine(DeadCoroutine());
-    }
-
-    // Dead coroutine
-    private IEnumerator DeadCoroutine()
-    {
+        isDead = true;
         characterCollider.enabled = false;
         animator.SetTrigger("Die");
-
-        yield return new WaitForEndOfFrame();
-
-        isDead = true;
         aimingLine.positionCount = 0;
     }
 }
