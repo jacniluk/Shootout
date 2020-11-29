@@ -25,6 +25,8 @@ public class PlayerShooting : MonoBehaviour
     // Update shooting
     private void UpdateShooting()
     {
+        if (GameManager.Instance.IsRoundEnding()) return;
+
         if (Input.GetMouseButtonDown(0))
         {
             pressTime = DateTime.Now;

@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
     // Instance
     public static GameManager Instance;
 
+    // Is round ending
+    private bool isRoundEnding;
+
     // Awake
     public void Awake()
     {
@@ -16,6 +19,8 @@ public class GameManager : MonoBehaviour
     // Level complete
     public void LevelComplete()
     {
+        isRoundEnding = true;
+
         if (SceneManager.sceneCountInBuildSettings - 1 > SceneManager.GetActiveScene().buildIndex)
         {
             MessageAnimation.Instance.ShowMessage("Level complete!", LevelUp);
@@ -41,6 +46,8 @@ public class GameManager : MonoBehaviour
     // Game over
     public void GameOver()
     {
+        isRoundEnding = true;
+
         MessageAnimation.Instance.ShowMessage("Fail!", RestartLevel);
     }
 
@@ -48,5 +55,11 @@ public class GameManager : MonoBehaviour
     private void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    // Check if round is ending
+    public bool IsRoundEnding()
+    {
+        return isRoundEnding;
     }
 }

@@ -17,6 +17,8 @@ public class PlayerAiming : MonoBehaviour
     // Update aiming
     private void UpdateAiming()
     {
+        if (GameManager.Instance.IsRoundEnding()) return;
+
         UpdateIsAiming();
 
         if (isAiming)
